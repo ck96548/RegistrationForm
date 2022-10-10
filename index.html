@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="main.js"> </script>
+    <style>
+        form{
+            border-style: solid;
+            border-color: red;
+            text-align: center;
+        }
+
+        div{
+            border-style: solid;
+            border-color: yellowgreen;
+        }
+
+        input{
+             font-size: medium;
+             width: 800px;
+             border-color: aquamarine;
+             color: black;
+        }
+        #date{
+            font-size: medium;
+            width: 400px;
+        }
+        #time{
+            font-size: medium;
+             width: 400px;
+        }
+        #submit{
+            background-color: aqua;
+        }
+        body{
+            background-color:#ccffdd;
+        }
+       
+    </style>
+</head>
+<body>
+  
+    <form>
+        <div style="background-color:#ffddcc;">
+        <h2>Book a call</h2>
+        <h5>Bokk a call slot and our representative will call you within 1 hour of selective time </h5>
+        <label for="username">Username</label>
+        <br>
+        <input type="text" id="username" placeholder="Username" name="user" required>
+        <br>
+        <br>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" placeholder="Email" id="email">
+        <br>
+        <br>
+        <label for="phone">Phone</label>
+        <br>
+        <input type="number" id="phone" placeholder="Phone" name="phone" required>
+        <br>
+        <br>
+        <label for="call">Time to call</label>
+        <br>
+        <input type="date" id="date" placeholder="date" name="date" required>
+        <input type="time" id="time" placeholder="time" name="time" required>
+         <br>
+         <br>
+        <input type="submit" id="submit" value="Get a Call">
+        </div>
+        
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doms Manipulation</title>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <section class="container">
+        <form id="myform">
+            <h1> Add User</h1>
+            <div class="msg"></div>
+            <div>
+                <label for="name"> Name:</label><br>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email"> Email:</label><br>
+                <input type="email" id="email">
+            </div>
+            <input class="btn" type="submit" value="Submit">
+        </form>
+
+            <ul id="user">
+                <!-- <li id="item">item1</li>
+                <li id="item">item2</li>
+                <li id="item">item3</li> -->
+            </ul>
+        
+
+    </section>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        const myform = document.querySelector('#myform');
+        const container = document.querySelector('.container');
+        const mag = document.querySelector('.msg');
+        const nameInput = document.querySelector('#name');
+        const emailInput = document.querySelector('#email');
+        const userList = document.querySelector('#user');
+
+        btn.addEventListener('mouseover', (e)=> {
+            e.preventDefault();
+            console.log("mouseover");
+            myform.style.background = 'yellow'
+            container.style.background = 'pink'
+        });
+        btn.addEventListener('mouseout', (e)=> {
+            e.preventDefault();
+            console.log("mouseout");
+            myform.style.background = 'green'
+            container.style.background = 'grey'
+        });
+        btn.addEventListener('click', (e)=> {
+            e.preventDefault();
+            console.log("click");
+            myform.style.background = 'brown'
+            container.style.background = 'red'
+        });
+
+        myform.addEventListener('submit', onSubmit);
+
+        function onSubmit(e){
+            e.preventDefault();
+
+            if(nameInput.value === '' || emailInput === '' ){
+                mag.innerHTML = 'Please enter all the details'
+
+                setTimeout(() => msg.remove(),3000);
+            }else{
+                const li = document.createElement('li');
+                li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+
+                userList.appendChild(li);
+
+                // clear field
+
+                nameInput = '';
+                emailInput = '';
+            }
+        }
+        
+
+    </script>
+</body>
+
+</html>
