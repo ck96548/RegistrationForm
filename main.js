@@ -51,6 +51,8 @@ myform.addEventListener('submit', onSubmit);
 function onSubmit(e) {
     e.preventDefault();
 
+
+
     if (nameInput.value === '' || emailInput === '') {
         msg.innerHTML = 'Please enter all the details'
 
@@ -70,7 +72,12 @@ function onSubmit(e) {
 
         localStorage.setItem("Email",emailInput.value)
 
-        console.log(localStorage.getItem("Email"))
+        let obj = {
+            name:nameInput.value,
+            Email:emailInput.value
+        }
+        let userDetails = JSON.stringify(obj)
+        localStorage.setItem("User Details",userDetails)
 
     }
 }
