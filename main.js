@@ -56,7 +56,7 @@ function onSubmit(e) {
     if (nameInput.value === '' || emailInput === '') {
         msg.innerHTML = 'Please enter all the details'
 
-        setTimeout(() =>msg.remove(),3000);
+        setTimeout(() => msg.remove(), 3000);
     } else {
         //let li = document.createElement('li');
         // li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
@@ -67,17 +67,82 @@ function onSubmit(e) {
 
         // nameInput = '';
         // emailInput = '';
-        
-        localStorage.setItem("name",nameInput.value)
 
-        localStorage.setItem("Email",emailInput.value)
+        // localStorage.setItem("name",nameInput.value)
 
-        let obj = {
-            name:nameInput.value,
-            Email:emailInput.value
+        // localStorage.setItem("Email",emailInput.value)
+
+
+        // adding user name and email in a list and display on browser 
+
+        btn.addEventListener('click', addUser);
+
+        function addUser(e) {
+            e.preventDefault();
+
+            // getting user value like name and email
+            let userName = document.getElementById('name').value;
+            let userEmail = document.getElementById('email').value;
+
+            // creating obj of user 
+            let obj = {
+                name: nameInput.value,
+                Email: emailInput.value
+            }
+            // adding user in local storage
+            let userDetails = JSON.stringify(obj)
+            localStorage.setItem(obj.Email, userDetails)
+
+            // creating edit btn
+            let editBtn = document.createElement('button');
+            editBtn.className = 'edit';
+            editBtn.appendChild(document.createTextNode('edit'));
+
+            // creating delete btn
+            let deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete';
+            deleteBtn.appendChild(document.createTextNode('delete'));
+
+            // creating li element 
+            let li = document.createElement('li');
+            // adding user name and email to li element
+            li.appendChild(document.createTextNode(userName + " " + userEmail));
+            // adding edit and delete btn
+            li.appendChild(editBtn)
+            li.appendChild(deleteBtn)
+
+            // adding li element within UL element
+            userList.append(li)
+
+
+
         }
-        let userDetails = JSON.stringify(obj)
-        localStorage.setItem("User Details",userDetails)
+
+
+        // editing and deleting username and User email
+        container.addEventListener('click', editDeleteItem)
+
+
+        // edit user name and email
+        function editDeleteItem(e) {
+            if (e.target.classList.contains('edit')) {
+                //e.target.parrentElement;
+                nameInput.value = ' ';
+                emailInput.value = ' ';
+            }
+
+            // delete user name and email
+            if (e.target.classList.contains('delete')) {
+                if (confirm('Are you ok')) {
+                    let li = e.target.parrentElement;
+                    userList.remove(li)
+                }
+            }
+        }
+
+
+
+
 
     }
 }
