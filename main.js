@@ -91,6 +91,10 @@ function onSubmit(e) {
             }
             // adding user in local storage
             let userDetails = JSON.stringify(obj)
+
+            if(localStorage.getItem(userEmail) !== null){
+                removeUserFromScreen(userEmail)
+            }
             localStorage.setItem(obj.Email, userDetails)
 
             // creating edit btn
@@ -120,6 +124,7 @@ function onSubmit(e) {
 
 
         // editing and deleting username and User email
+
         container.addEventListener('click', editDeleteItem)
 
 
